@@ -5,19 +5,26 @@ import "../styles/global.css";
 interface Props {
   header?: string;
   header2?: string;	
+  description?: string;
 }
 
-const { header = "Hi, I’m Arjun Bhogal", header2 = "A UI/UX Developer" } = Astro.props;
+const { header = "Hi, I’m Arjun Bhogal", header2 = "A UI/UX Developer", description = "Coming soon..." } = Astro.props;
 
 ---
 
-<div class="w-[1440px] h-[4636px] relative bg-White overflow-hidden">
-    <div class="left-[80px] top-[384px] absolute inline-flex flex-col justify-start items-start gap-2.5">
-        <div class="flex flex-col justify-start items-start">
-            <div class="self-stretch justify-start text-Black text-8xl font-semibold">Hi, I’m Arjun Bhogal </div>
-            <div class="self-stretch justify-start text-Black text-8xl font-semibold">A UI/UX Developer</div>
-            <div class="self-stretch justify-start text-Black text-2xl font-semibold pt-2">Coming soon...</div>
-        </div>
+
+<section class="w-full min-h-screen flex items-center">
+    <div class="max-w-8xl mx-auto sm:px-6 lg:px-8 w-full">
+      <div class="text-left space-y-4 px-3">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold text-zinc-900 leading-tight">
+            {header}
+        </h1>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold text-zinc-900 leading-tight">
+            {header2}
+        </h2>
+        <p class="text-xl sm:text-2xl font-semibold text-zinc-900">
+            {description}
+        </p>
+      </div>
     </div>
-    
-</div>
+  </section>

@@ -9,5 +9,8 @@ export default defineConfig({
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
+    optimizeDeps: {
+      include: ['lucide-react'],
+    },
   },
 });
