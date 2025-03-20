@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
@@ -22,7 +22,7 @@ const AnimatedNav = ({ title = "arjun bhogal" }: Props) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <div className="max-w-8xl mx-auto sm:px-6 lg:px-8 backdrop-blur-xs">
+      <div className="max-w-8xl mx-auto sm:px-6 lg:px-8 backdrop-blur-sm">
         <div className="flex justify-between h-16 items-center">
           {/* Left side - Title */}
           <motion.a
@@ -47,7 +47,7 @@ const AnimatedNav = ({ title = "arjun bhogal" }: Props) => {
                 <motion.a
                   key={item.name}
                   href={item.href}
-                  className="text-zinc-900 px-3 py-2 text-lg font-medium rounded-md hover:bg-zinc-100 hover:text-zinc-900 transition duration-300"
+                  className="text-zinc-900 px-3 py-2 text-lg font-medium rounded-md hover:bg-zinc-100 hover:text-zinc-900 transition duration-300 ease-in-out"
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.3 + index * 0.1 }}
@@ -57,29 +57,46 @@ const AnimatedNav = ({ title = "arjun bhogal" }: Props) => {
               ))}
             </div>
           </motion.div>
-          
-          {/* Mobile Menu Button */}
+
+          {/* Mobile Menu Button with Smooth Transition */}
           <div className="flex items-center sm:hidden">
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-zinc-900 hover:text-zinc-950 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-zinc-500"
             >
               <span className="sr-only">Open main menu</span>
-              {menuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
+              <AnimatePresence mode="wait">
+                {menuOpen ? (
+                  <motion.div
+                    key="close-icon"
+                    initial={{ opacity: 0, rotate: -10, scale: 0.8 }}
+                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                    exit={{ opacity: 0, rotate: 90, scale: 0.8 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                  >
+                    <X className="h-6 w-6" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="menu-icon"
+                    initial={{ opacity: 0, rotate: 10, scale: 0.8 }}
+                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                    exit={{ opacity: 0, rotate: -90, scale: 0.8 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                  >
+                    <Menu className="h-6 w-6" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </button>
           </div>
-         
         </div>
       </div>
 
       {/* Mobile Menu */}
       {menuOpen && (
         <motion.div
-          className="sm:hidden px-2 pt-2 pb-3 space-y-1"
+          className="sm:hidden px-2 pt-2 pb-3 space-y-1 backdrop-blur-sm"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
