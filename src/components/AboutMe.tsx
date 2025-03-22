@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const AboutMe = () => {
   return (
     <section id="about" className="w-full py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div className="mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         
         {/* Left Side - Text */}
         <motion.div

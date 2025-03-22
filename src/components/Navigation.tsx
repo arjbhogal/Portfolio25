@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { name: "work", href: "#work" },
+  { name: "work", href: "/work" },
   { name: "about", href: "#about" },
   { name: "contact", href: "#contact" },
 ];
@@ -22,7 +22,7 @@ const AnimatedNav = ({ title = "arjun bhogal" }: Props) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <div className="max-w-8xl mx-auto sm:px-6 lg:px-8 backdrop-blur-sm">
+      <div className=" mx-auto sm:px-6 lg:px-8 backdrop-blur-sm">
         <div className="flex justify-between h-16 items-center">
           {/* Left side - Title */}
           <motion.a

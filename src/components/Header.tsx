@@ -14,7 +14,7 @@ const AnimatedHeader = ({
 }: Props) => {
   return (
     <section className="w-full min-h-screen flex items-center">
-      <div className="max-w-8xl mx-auto sm:px-6 lg:px-8 w-full">
+      <div className="mx-auto sm:px-6 lg:px-8 w-full">
         <div className="text-left space-y-3 px-3">
           {/* Animated Header 1 */}
           <motion.h1
